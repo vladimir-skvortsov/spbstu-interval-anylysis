@@ -18,7 +18,7 @@ def find_upper_bound(mid_matrix):
   alpha = Decimal(1)
 
   while 0 not in det(mid_matrix, alpha):
-    alpha = Decimal(math.exp(float(alpha)))
+    alpha = Decimal(math.exp(k))
 
   return alpha
 
@@ -57,6 +57,8 @@ if __name__ == '__main__':
   ])
 
   alphas, dets = find_alpha(mid_matrix, 0.00001)
+
+  print(len(alphas), alphas[-1])
 
   theoretical_alpha = Decimal('0.025')
 
