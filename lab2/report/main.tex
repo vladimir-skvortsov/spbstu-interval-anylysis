@@ -1,0 +1,225 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}
+\usepackage{graphicx}
+\graphicspath{ {./graphics/} }
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\pagestyle{empty} %
+\usepackage[pageanchor]{hyperref}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{indentfirst}
+\usepackage{tikz}
+
+\newcommand{\kaucher}{
+  \begin{tikzpicture}
+    \draw (0, 0) circle (0.6ex);
+    \draw (-0.6ex, 0) -- (0.6ex, 0);
+  \end{tikzpicture}%
+}
+
+\begin{document}
+  \begin{titlepage}
+    \begin{center}
+      Санкт-Петербургский политехнический университет \\Петра Великого
+    \end{center}
+
+    \begin{center}
+      Физико-механический институт
+    \end{center}
+
+    \begin{center}
+      Высшая школа прикладной математики и вычислительной\\ физики
+    \end{center}
+
+    \vspace{8em}
+
+    \begin{center}
+      \textbf{Отчет по лабораторной работе №2}\\
+      \textbf{“Интервальный анализ”}
+    \end{center}
+
+    \vspace{\fill}
+
+    \begin{flushright}
+      \noindentВыполнили студент группы 5030102/10201:
+      \hfill
+      Скворцов Владимир Сергеевич \\
+    \end{flushright}
+    Преподаватель: \hfill Баженов Александр Николаевич
+
+    \vspace{12em}
+
+    \begin{center}
+      Санкт-Петербург\\
+      2024
+    \end{center}
+  \end{titlepage}
+
+  \tableofcontents
+
+  \newpage
+
+  \section{Постановка задачи}
+
+  Дан набор ИСЛАУ \ref{eq:islae}
+
+  \begin{equation} \label{eq:islae}
+    \mathbf{A}x = \mathbf{b}, \ x = (x_1, x_2)
+  \end{equation}
+
+  с матрицей \ref{eq:islae_a} и вектором правой части \ref{eq:islae_b}
+
+  \begin{equation} \label{eq:islae_a}
+    \mathbf{A} = \begin{pmatrix}
+      [0.65, 1.25] & [0.70, 1.3] \\
+      [0.75, 1.35] & [0.70, 1.3]
+    \end{pmatrix},
+    ~
+    \mathbf{A} = \begin{pmatrix}
+      [0.65, 1.25] & [0.70, 1.3] \\
+      [0.75, 1.35] & [0.70, 1.3] \\
+      [0.8, 1.4] & [0.70, 1.3]
+    \end{pmatrix},
+    ~
+    \mathbf{A} = \begin{pmatrix}
+      [0.65, 1.25] & [0.70, 1.3] \\
+      [0.75, 1.35] & [0.70, 1.3] \\
+      [0.8, 1.4] & [0.70, 1.3] \\
+      [-0.3, 0.3] & [0.70, 1.3]
+    \end{pmatrix},
+  \end{equation}
+
+  \begin{equation} \label{eq:islae_b}
+    \mathbf{b} = \begin{pmatrix}
+      [2.75, 3.15] \\
+      [2.85, 3.25]
+    \end{pmatrix},
+    ~
+    \mathbf{b} = \begin{pmatrix}
+      [2.75, 3.15] \\
+      [2.85, 3.25] \\
+      [2.90, 3.3]
+    \end{pmatrix},
+    ~
+    \mathbf{b} = \begin{pmatrix}
+      [2.75, 3.15] \\
+      [2.85, 3.25] \\
+      [2.90, 3.3] \\
+      [1.8, 2.2]
+    \end{pmatrix}.
+  \end{equation}
+
+  Необходимо:
+
+  \begin{itemize}
+    \item Проверить непустоту допускового множества ИСЛАУ \ref{eq:islae},
+    \item построить график функционала \( \text{Tol}(x) \) для \ref{eq:islae},
+    \item построить допусковое множество ИСЛАУ \ref{eq:islae},
+    \item найти \( \text{argmax} \ \text{Tol} \) и образующие допускового
+      функционала.
+  \end{itemize}
+
+  Для достижения непустого допускового множества провести коррекцию ИСЛАУ
+  \ref{eq:islae}:
+
+  \begin{itemize}
+    \item правой части ИСЛАУ \ref{eq:islae_a} --- \( b \)-коррекция,
+    \item матрицы ИСЛАУ \ref{eq:islae_a} --- \( A \)-коррекция,
+    \item комбинацией предыдущих методов с одновременным изменением
+      правой части и матрицы ИСЛАУ — \( Ab \)-коррекция.
+  \end{itemize}
+
+  Для всех видов коррекции построить график функционала
+  \( \text{Tol} (x) \), допускового множества, отобразить
+  \( \text{argmax} \ \text{Tol} \) и найденные ранее частные решения набора
+  СЛАУ.
+
+  \section{Необходимая теория}
+
+  \subsection{Допусковое множество}
+
+  Пусть даны интервальная \( m \times n \) матрица \( \mathbf{A} \) и
+  интервальный аетор правой части \( \mathbf{b} \).
+
+  \vspace{\baselineskip}
+
+  \emph{Допусковым множеством} решений ИСЛАУ называется множетсво
+
+  \begin{equation} \label{eq:tol_set_of_solutions}
+    \Xi_{\text{tol}} (\mathbf{A}, \mathbf{b}) \stackrel{\text{def}}{=}
+      \left \{ x \in \mathbb{R}^n \mid \forall A \in \mathbf{A} \ \exists b \in \mathbf{b}: \ Ax = b \right \}.
+  \end{equation}
+
+  \vspace{\baselineskip}
+
+  Функционалом \( \text{Tol} (x): \mathbb{R}^n \times \mathbb{IR}^{m \times n} \times \mathbb{IR}^m \to \mathbb{R} \)
+  называется выражение
+
+  \begin{equation} \label{eq:tol}
+    \text{Tol} (x, \mathbf{A}, \mathbf{b}) \stackrel{\text{def}}{=}
+      \min_{1 \leq i \leq m} \left \{ \text{rad} \mathbf{b}_i - \left | \text{mid} \mathbf{b}_i - \sum_{j=1}^n \mathbf{a}_{ij} x_j \right | \right \}.
+  \end{equation}
+
+  Тогда принадлежность \( x \in \Xi_{\text{tol}} (\mathbf{A}, \mathbf{b}) \)
+  равносильна \( \text{Tol} (x, \mathbf{A}, \mathbf{b}) \geq 0 \), то есть
+  допусковое множество решений интервальной линейной системы
+  \( \mathbf{A} x = \mathbf{b} \) есть множество уровня
+  \[
+    \left \{ x \in \mathbb{R}^n \mid \text{Tol} (x, \mathbf{A}, \mathbf{b}) \geq 0 \right \}
+  \]
+  функционала \( \text{Tol} \).
+
+  \vspace{\baselineskip}
+
+  \subsection{\( b \)-коррекция ИСЛАУ}
+
+  Пусть матрица \( \mathbf{A} \) ИСЛАУ неизменна, и значения
+  \( \text{mid} \mathbf{b}_i, i \in \overline{1,m} \) зафиксированы. Тогда
+  расширение вектора \( \mathbf{b} \) путем его замены на вектор
+
+  \begin{equation} \label{eq:b-correction}
+    \mathbf{b} + K\mathbf{e}, \ K \ge 0, \ \mathbf{e} = ([-1, 1], \dots, [-1, 1])^T
+  \end{equation}
+
+  приведет к тому, что значение абсолютного максимума \( T \) распознаю-
+  щего функционала \( \text{Tol} (x, \mathbf{A}, \mathbf{b}) \) возрастет на
+  постоянную \( K \):
+  \[
+    \max_{x \in \mathbb{R}^n} \text{Tol} (x, \mathbf{A}, \mathbf{b} + K \mathbf{e})
+      = \max_{x \in \mathbb{R}^n} \text{Tol} (x, \mathbf{A}, \mathbf{b}) + K = T + K
+  \]
+  прием \( \text{argmax} \ \text{Tol} \) — положение точки \( T \) ---
+  не изменится.
+
+  \subsection{\( A \)-коррекция ИСЛАУ}
+
+  \( A \)-коррекцией ИСЛАУ \( \mathbf{A}x = \mathbf{b} \) заключается
+  в замене матрицы \( \mathbf{A} \) ее интервальной матрицей
+  \( \mathbf{A} \kaucher \mathbf{E} \) такой, что
+  \[
+    \text{rad} (\mathbf{A} \kaucher \mathbf{E}) < \text{rad} \mathbf{A}, \
+    \text{mid} (\mathbf{A} \kaucher \mathbf{E}) = \text{mid} \mathbf{A}, \
+    \mathbf{e}_{ij} = [-e_{ij}, e_{ij}].
+  \]
+
+  \section{Реализаця}
+
+  Лабораторная работа выполнена на языке программирования Python. В ходе
+  работы были также использованы библиотеки \verb!numpy! и
+  \verb!matplotlib!.
+
+  Ссылка на GitHub репозиторий:
+  \href{https://github.com/vladimir-skvortsov/spbstu-interval-anylysis}{https://github.com/vladimir-skvortsov/spbstu-interval-anylysis}
+
+
+
+  \clearpage
+
+  \section{Обсуждение}
+
+  \section{Выводы}
+
+\end{document}
