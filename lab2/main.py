@@ -1,82 +1,116 @@
-import math
-import numpy as np
+# Import necessary modules
 from interval import Interval
-from decimal import Decimal, getcontext
+import numpy as np
 import matplotlib.pyplot as plt
+from scipy.optimize import minimize
 
-getcontext().prec = 50
+# Define the IntervalMatrix and IntervalVector classes
+class IntervalMatrix:
+  def __init__(self, intervals):
+    self.intervals = np.array(intervals)
 
-def det(mid_matrix, alpha):
-  i1 = Interval(Decimal(mid_matrix[0][0]) - alpha, Decimal(mid_matrix[0][0]) + alpha)
-  i2 = Interval(Decimal(mid_matrix[0][1]) - alpha, Decimal(mid_matrix[0][1]) + alpha)
-  i3 = Interval(Decimal(mid_matrix[1][0]) - alpha, Decimal(mid_matrix[1][0]) + alpha)
-  i4 = Interval(Decimal(mid_matrix[1][1]) - alpha, Decimal(mid_matrix[1][1]) + alpha)
-  det = i1 * i4 - i2 * i3
-  return det
+  def mid(self):
+    return [[interval.mid() for interval in row] for row in self.intervals]
 
-def find_upper_bound(mid_matrix):
-  alpha = Decimal(1)
+  def rad(self):
+    return [[interval.rad() for interval in row] for row in self.intervals]
 
-  while 0 not in det(mid_matrix, alpha):
-    alpha = Decimal(math.exp(k))
+class IntervalVector:
+  def __init__(self, intervals):
+    self.intervals = np.array(intervals)
 
-  return alpha
+  def mid(self):
+    return [interval.mid() for interval in self.intervals]
 
-def find_alpha(mid_matrix, eps=10e-18):
-  a = Decimal(0)
-  b = find_upper_bound(mid_matrix)
-  k = 0
+  def rad(self):
+    return [interval.rad() for interval in self.intervals]
 
-  alphas = []
-  dets = []
+# Define the tolerance functional
+def tol(x, A, b):
+  values = []
 
-  while b - a > eps:
-    mid = (a + b) / 2
+  for i in range(A.intervals.shape[0]):
+    value = b.intervals[i].rad() - (-np.dot(A.intervals[i], x) + b.intervals[i].mid()).abs()
+    values.append(value)
 
-    alphas.append(mid)
-    dets.append(det(mid_matrix, mid))
+  return min(values)
 
-    if 0 in det(mid_matrix, mid):
-      b = mid
-    else:
-      a = mid
+# Check non-emptiness of the tolerance set
+def is_non_empty_tolerance_set(A, b, epsilon=0.0001):
+  def target(x):
+    return -tol(x, A, b)
 
-    k += 1
+  mid_A = np.array(A.mid())
+  mid_b = np.array(b.mid())
+  initial_guess, _, _, _ = np.linalg.lstsq(mid_A, mid_b, rcond=None)
 
-  alpha = (a + b) / 2
+  result = minimize(target, initial_guess, method='BFGS', options={'gtol': epsilon})
 
-  alphas.append(alpha)
-  dets.append(det(mid_matrix, alpha))
+  max_tol = -result.fun
+  print(result)
+  return max_tol >= 0
 
-  return alphas, dets
+# Perform b-correction
+def b_correction(b, K):
+  e = IntervalVector([Interval(-1, 1) for _ in range(len(b.intervals))])
+  corrected_b = IntervalVector([Interval(b_i.mid() + K, b_i.mid() + K) for b_i in b.intervals])
+  return corrected_b
+
+# Perform A-correction
+def a_correction(A, K):
+  corrected_intervals = [[Interval(a_ij.mid() + K, a_ij.mid() + K) for a_ij in row] for row in A.intervals]
+  return IntervalMatrix(corrected_intervals)
+
+# Plotting functions
+def plot_tol_functional(A, b):
+  x = np.linspace(-1, 3, 21)
+  y = np.linspace(0, 4, 21)
+  xx, yy = np.meshgrid(x, y)
+  zz = np.array([[0 if tol([x, y], A, b) < 0 else 1 for x, y in zip(x_row, y_row)] for x_row, y_row in zip(xx, yy)])
+
+  plt.contourf(xx, yy, zz, levels=1, colors=['lightcoral', 'lightgreen'])
+  plt.colorbar()
+  plt.xlabel('x1')
+  plt.ylabel('x2')
+  plt.show()
 
 if __name__ == '__main__':
-  mid_matrix = np.array([
-    [Decimal('1.05'), Decimal('0.95')],
-    [Decimal('1.0'), Decimal('1.0')],
+  # A = IntervalMatrix([
+  #   [Interval(0.65, 1.25), Interval(0.70, 1.3)],
+  #   [Interval(0.75, 1.35), Interval(0.70, 1.3)]
+  # ])
+  # b = IntervalVector([Interval(2.75, 3.15), Interval(2.85, 3.25)])
+
+  # A = IntervalMatrix([
+  #   [Interval(0.65, 1.25), Interval(0.70, 1.3)],
+  #   [Interval(0.75, 1.35), Interval(0.70, 1.3)],
+  #   [Interval(0.8, 1.4), Interval(0.70, 1.3)],
+  # ])
+  # b = IntervalVector([
+  #   Interval(2.75, 3.15),
+  #   Interval(2.85, 3.25),
+  #   Interval(2.90, 3.3),
+  # ])
+
+  A = IntervalMatrix([
+    [Interval(0.65, 1.25), Interval(0.70, 1.3)],
+    [Interval(0.75, 1.35), Interval(0.70, 1.3)],
+    [Interval(0.8, 1.4), Interval(0.70, 1.3)],
+    [Interval(-0.3, 0.3), Interval(0.70, 1.3)],
+  ])
+  b = IntervalVector([
+    Interval(2.75, 3.15),
+    Interval(2.85, 3.25),
+    Interval(2.90, 3.3),
+    Interval(1.8, 2.2),
   ])
 
-  alphas, dets = find_alpha(mid_matrix, 0.00001)
+  if is_non_empty_tolerance_set(A, b):
+    print('The tolerance set is non-empty.')
+  else:
+    print('The tolerance set is empty. Performing corrections.')
 
-  print(len(alphas), alphas[-1])
-
-  theoretical_alpha = Decimal('0.025')
-
-  ks = np.arange(len(alphas))
-  alphas = np.array(alphas)
-
-  deltas = np.abs(alphas - theoretical_alpha) / theoretical_alpha
-  ys = np.exp(-ks)
-
-  plt.plot(ks, alphas)
-  plt.xlabel('k')
-  plt.ylabel('α')
-  plt.show()
-
-  plt.semilogy(ks, deltas, label='Относительная погрешность')
-  plt.semilogy(ks, ys, label='exp(-k)')
-  plt.xticks(ks)
-  plt.xlabel('k')
-  plt.ylabel('δ')
-  plt.legend()
-  plt.show()
+  K = 0
+  corrected_A = a_correction(A, K)
+  corrected_b = b_correction(b, K)
+  plot_tol_functional(A, b)
