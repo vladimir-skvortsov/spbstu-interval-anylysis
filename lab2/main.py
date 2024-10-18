@@ -4,7 +4,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import minimize
 
-# Define the IntervalMatrix and IntervalVector classes
 class IntervalMatrix:
   def __init__(self, intervals):
     self.intervals = np.array(intervals)
@@ -25,7 +24,6 @@ class IntervalVector:
   def rad(self):
     return [interval.rad() for interval in self.intervals]
 
-# Define the tolerance functional
 def tol(x, A, b):
   values = []
 
@@ -35,7 +33,6 @@ def tol(x, A, b):
 
   return min(values)
 
-# Check non-emptiness of the tolerance set
 def is_non_empty_tolerance_set(A, b, epsilon=0.0001):
   def target(x):
     return -tol(x, A, b)
@@ -50,18 +47,15 @@ def is_non_empty_tolerance_set(A, b, epsilon=0.0001):
   print(result)
   return max_tol >= 0
 
-# Perform b-correction
 def b_correction(b, K):
   e = IntervalVector([Interval(-1, 1) for _ in range(len(b.intervals))])
   corrected_b = IntervalVector([Interval(b_i.mid() + K, b_i.mid() + K) for b_i in b.intervals])
   return corrected_b
 
-# Perform A-correction
 def a_correction(A, K):
   corrected_intervals = [[Interval(a_ij.mid() + K, a_ij.mid() + K) for a_ij in row] for row in A.intervals]
   return IntervalMatrix(corrected_intervals)
 
-# Plotting functions
 def plot_tol_functional(A, b):
   x = np.linspace(-1, 3, 21)
   y = np.linspace(0, 4, 21)
