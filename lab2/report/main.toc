@@ -4,8 +4,9 @@
 \contentsline {subsection}{\numberline {2.1}Допусковое множество}{2}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}\( b \)-коррекция ИСЛАУ}{3}{subsection.2.2}%
 \contentsline {subsection}{\numberline {2.3}\( A \)-коррекция ИСЛАУ}{3}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}\( Ab \)-коррекция ИСЛАУ}{3}{subsection.2.4}%
 \contentsline {section}{\numberline {3}Реализаця}{3}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Алгоритм проверки непустоты допускового множества ИСЛАУ}{3}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.1}Алгоритм проверки непустоты допускового множества ИСЛАУ}{4}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Результаты вычислений}{4}{subsection.3.2}%
-\contentsline {section}{\numberline {4}Обсуждение}{5}{section.4}%
-\contentsline {section}{\numberline {5}Выводы}{5}{section.5}%
+\contentsline {section}{\numberline {4}Обсуждение}{6}{section.4}%
+\contentsline {section}{\numberline {5}Выводы}{6}{section.5}%
