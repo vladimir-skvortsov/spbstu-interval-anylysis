@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1732214489.85868 "/Users/vladimirskvortsov/Projects/spbstu/spbstu-interval-anylysis/lab2/report/main.tex" "main.pdf" "main" 1732214491.27166 0
+["pdflatex"] 1732214576.94327 "/Users/vladimirskvortsov/Projects/spbstu/spbstu-interval-anylysis/lab2/report/main.tex" "main.pdf" "main" 1732214578.32212 0
   "/Users/vladimirskvortsov/Library/texlive/2024/texmf-var/fonts/tfm/lh/lh-t2a/labx1000.tfm" 1712594449.9276 3300 6abb8e321227ead2a8e929e5abc72bd3 ""
   "/Users/vladimirskvortsov/Library/texlive/2024/texmf-var/fonts/tfm/lh/lh-t2a/labx1200.tfm" 1712594461.4327 3308 eee81981029f67083258db36df06e523 ""
   "/Users/vladimirskvortsov/Library/texlive/2024/texmf-var/fonts/tfm/lh/lh-t2a/labx1440.tfm" 1712594455.58063 3304 6a543c07045572737981351171e0505e ""
@@ -10,7 +10,7 @@
   "/Users/vladimirskvortsov/Library/texlive/2024/texmf-var/fonts/tfm/lh/lh-t2a/larm1440.tfm" 1712594452.87019 3256 3daaa33cf35cf3f354983aa3214ecd7f ""
   "/Users/vladimirskvortsov/Library/texlive/2024/texmf-var/fonts/tfm/lh/lh-t2a/lati1000.tfm" 1713191534.52112 3528 defd551e32c4af414f9b54b8101bfa9b ""
   "/Users/vladimirskvortsov/Library/texlive/2024/texmf-var/fonts/tfm/lh/lh-t2a/latt1000.tfm" 1712615341.25782 1272 55f67101730a20777decd892fb4b4e3e ""
-  "/Users/vladimirskvortsov/Projects/spbstu/spbstu-interval-anylysis/lab2/report/main.tex" 1732214489.66004 19215 ffee7e90946de9db7f8471c28a7c4bae ""
+  "/Users/vladimirskvortsov/Projects/spbstu/spbstu-interval-anylysis/lab2/report/main.tex" 1732214576.74577 16767 c4a320a4cc72d7eb8c190f6406a02661 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc" 1136849721 3141 82d5616418ed8d5de703b3951bedecb4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -205,10 +205,10 @@
   "graphics/tol_functional_a_corrected.png" 1732212636.28099 20828 a37513b698509652dfa91a78624292ab ""
   "graphics/tol_functional_ab_corrected.png" 1732212655.41845 23124 6c60d8a36633514cf44701a3e3e993f9 ""
   "graphics/tol_functional_b_corrected.png" 1732212609.58087 22830 a8705e894aa1b9197c9421cf11a00a46 ""
-  "main.aux" 1732214491.14798 5559 c7304384dfb24ba8b4a7caea0e1c4663 "pdflatex"
-  "main.out" 1732214491.14928 3444 d29fb56eecf5243784d9eae8dbeed59f "pdflatex"
-  "main.tex" 1732214489.66004 19215 ffee7e90946de9db7f8471c28a7c4bae ""
-  "main.toc" 1732214491.14952 1503 3b728b11184ef83232c8b9f56cff5bfd "pdflatex"
+  "main.aux" 1732214578.19946 5559 c7304384dfb24ba8b4a7caea0e1c4663 "pdflatex"
+  "main.out" 1732214578.20073 3444 d29fb56eecf5243784d9eae8dbeed59f "pdflatex"
+  "main.tex" 1732214576.74577 16767 c4a320a4cc72d7eb8c190f6406a02661 ""
+  "main.toc" 1732214578.20095 1503 3b728b11184ef83232c8b9f56cff5bfd "pdflatex"
   (generated)
   "main.aux"
   "main.log"
