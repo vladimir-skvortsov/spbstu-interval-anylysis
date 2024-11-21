@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1732195137.73938 "/Users/vladimirskvortsov/Projects/spbstu/spbstu-interval-anylysis/lab2/report/main.tex" "main.pdf" "main" 1732195138.56827 0
+["pdflatex"] 1732198410.81591 "/Users/vladimirskvortsov/Projects/spbstu/spbstu-interval-anylysis/lab2/report/main.tex" "main.pdf" "main" 1732198411.94989 0
   "/Users/vladimirskvortsov/Library/texlive/2024/texmf-var/fonts/tfm/lh/lh-t2a/labx1000.tfm" 1712594449.9276 3300 6abb8e321227ead2a8e929e5abc72bd3 ""
   "/Users/vladimirskvortsov/Library/texlive/2024/texmf-var/fonts/tfm/lh/lh-t2a/labx1200.tfm" 1712594461.4327 3308 eee81981029f67083258db36df06e523 ""
   "/Users/vladimirskvortsov/Library/texlive/2024/texmf-var/fonts/tfm/lh/lh-t2a/labx1440.tfm" 1712594455.58063 3304 6a543c07045572737981351171e0505e ""
@@ -10,7 +10,7 @@
   "/Users/vladimirskvortsov/Library/texlive/2024/texmf-var/fonts/tfm/lh/lh-t2a/larm1440.tfm" 1712594452.87019 3256 3daaa33cf35cf3f354983aa3214ecd7f ""
   "/Users/vladimirskvortsov/Library/texlive/2024/texmf-var/fonts/tfm/lh/lh-t2a/lati1000.tfm" 1713191534.52112 3528 defd551e32c4af414f9b54b8101bfa9b ""
   "/Users/vladimirskvortsov/Library/texlive/2024/texmf-var/fonts/tfm/lh/lh-t2a/latt1000.tfm" 1712615341.25782 1272 55f67101730a20777decd892fb4b4e3e ""
-  "/Users/vladimirskvortsov/Projects/spbstu/spbstu-interval-anylysis/lab2/report/main.tex" 1732195137.54866 12736 fe5caa1f2930159fe93ebf9a88075bb8 ""
+  "/Users/vladimirskvortsov/Projects/spbstu/spbstu-interval-anylysis/lab2/report/main.tex" 1732198410.55556 15412 bfa140f389297f4ea897e994bd7d220c ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc" 1136849721 3141 82d5616418ed8d5de703b3951bedecb4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -198,10 +198,16 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1712424169.32671 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1712424165 8221443 40f9df1b6389ef3c67cee569d869ba2e ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "main.aux" 1732195138.44879 2405 be3a7bc6bc178fb3c2f543bfd5970b2b "pdflatex"
-  "main.out" 1732195138.44948 2250 d1a34e06570d6338728dadc8cc69dfb8 "pdflatex"
-  "main.tex" 1732195137.54866 12736 fe5caa1f2930159fe93ebf9a88075bb8 ""
-  "main.toc" 1732195138.44968 1121 d7cec1b942d078635909771d92e98c7a "pdflatex"
+  "graphics/tol_1.png" 1732195758.9077 74150 0886359f61c2c6d9bf607c08f8372d33 ""
+  "graphics/tol_1_a_correction.png" 1732198131.76518 72017 9b3bf69691793ba890738c4c62a4e8d9 ""
+  "graphics/tol_2.png" 1732195758.91086 73724 b1ae971184e20735fb40c1efd65db822 ""
+  "graphics/tol_2_a_correction.png" 1732198131.77185 71908 d2e5912105298b6d5f12789495a8f747 ""
+  "graphics/tol_3.png" 1732195758.92006 75590 48cdf46762aa38f4d1084a4a0fec2cf6 ""
+  "graphics/tol_3_a_correction.png" 1732198131.77503 71992 08dd9663877a0d3be30b155eaab48867 ""
+  "main.aux" 1732198411.81737 5266 06d00116e70e58dfe675366cac061820 "pdflatex"
+  "main.out" 1732198411.81825 2943 4a433712f6d6a6534f5e84b108c216b8 "pdflatex"
+  "main.tex" 1732198410.55556 15412 bfa140f389297f4ea897e994bd7d220c ""
+  "main.toc" 1732198411.81847 1391 ca53d41480120a8d789732d74d692e1b "pdflatex"
   (generated)
   "main.aux"
   "main.log"

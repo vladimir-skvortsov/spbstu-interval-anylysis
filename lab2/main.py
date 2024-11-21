@@ -59,7 +59,6 @@ def A_correction(A):
     for a_ij in a_i:
       if a_ij < upper_bound:
         upper_bound = a_ij
-
   e = (lower_bound + upper_bound) / 2
   corrected_A = []
 
@@ -70,8 +69,6 @@ def A_correction(A):
       A_i.append([A[i][j]._a + e, A[i][j]._b - e])
 
     corrected_A.append(A_i)
-
-  print(lower_bound, upper_bound)
 
   return ip.Interval(corrected_A)
 
@@ -116,23 +113,6 @@ def plot_tol_functional(A, b, solution):
 
 if __name__ == '__main__':
   # A = ip.Interval([
-  #   [[3, 6], [-5, 2]],
-  #   [[-5, 7], [-3, -1]]
-  # ])
-  # b = ip.Interval([
-  #   [-2, 2],
-  #   [-1, 1],
-  # ])
-  # A = ip.Interval([
-  #   [[2, 5], [1, 2]],
-  #   [[-7, -5], [6, 7]]
-  # ])
-  # b = ip.Interval([
-  #   [3, 4],
-  #   [7, 8],
-  # ])
-
-  # A = ip.Interval([
   #   [[0.65, 1.25], [0.70, 1.3]],
   #   [[0.75, 1.35], [0.70, 1.3]]
   # ])
@@ -152,31 +132,31 @@ if __name__ == '__main__':
   #   [2.90, 3.3],
   # ])
 
-  A = ip.Interval([
-    [[0.65, 1.25], [0.70, 1.3]],
-    [[0.75, 1.35], [0.70, 1.3]],
-    [[0.8, 1.4], [0.70, 1.3]],
-    [[-0.3, 0.3], [0.70, 1.3]],
-  ])
-  b = ip.Interval([
-    [2.75, 3.15],
-    [2.85, 3.25],
-    [2.90, 3.3],
-    [1.8, 2.2],
-  ])
+  # A = ip.Interval([
+  #   [[0.65, 1.25], [0.70, 1.3]],
+  #   [[0.75, 1.35], [0.70, 1.3]],
+  #   [[0.8, 1.4], [0.70, 1.3]],
+  #   [[-0.3, 0.3], [0.70, 1.3]],
+  # ])
+  # b = ip.Interval([
+  #   [2.75, 3.15],
+  #   [2.85, 3.25],
+  #   [2.90, 3.3],
+  #   [1.8, 2.2],
+  # ])
 
   is_empty, solution = is_tolerance_set_empty(A, b)
 
   if is_empty:
     print('The tolerance set is empty. Performing corrections.')
 
-    corrected_b, k, iteration = find_b_correction_min_K(A, b, 10e-3)
-    b = corrected_b
-    print(f'b-correction minimum k is {k} ({iteration} iterations)')
+    # corrected_b, k, iteration = find_b_correction_min_K(A, b, 10e-3)
+    # b = corrected_b
+    # print(f'b-correction minimum k is {k} ({iteration} iterations)')
 
-    # A = A_correction(A)
+    A = A_correction(A)
   else:
     print('The tolerance set is non-empty.')
 
-  plot_tol_functional(A, b, solution)
+  # plot_tol_functional(A, b, solution)
   draw_tol(A, b)
