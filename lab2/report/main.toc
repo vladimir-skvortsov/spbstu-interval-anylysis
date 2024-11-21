@@ -8,7 +8,7 @@
 \contentsline {section}{\numberline {3}Реализаця}{3}{section.3}%
 \contentsline {section}{\numberline {4}Результаты}{4}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Максимум распознающего функционала}{4}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Достижение разрешимости за счёт коррекции правой части (А-коррекция)}{5}{subsection.4.2}%
-\contentsline {subsubsection}{\numberline {4.2.1}Поверхности распознающих функционалов}{7}{subsubsection.4.2.1}%
-\contentsline {section}{\numberline {5}Обсуждение}{9}{section.5}%
-\contentsline {section}{\numberline {6}Выводы}{9}{section.6}%
+\contentsline {subsection}{\numberline {4.2}Достижение разрешимости за счёт коррекции левой части (А-коррекция)}{4}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Достижение разрешимости за счёт коррекции правой части (b-коррекция)}{6}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Достижение разрешимости за счёт Ab-коррекции}{7}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Выводы}{7}{section.5}%
