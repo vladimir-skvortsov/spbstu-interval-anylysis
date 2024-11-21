@@ -1,66 +1,112 @@
-# Import necessary modules
-from interval import Interval
+import math
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import minimize
+import intvalpy as ip
 
-class IntervalMatrix:
-  def __init__(self, intervals):
-    self.intervals = np.array(intervals)
+def is_tolerance_set_empty(A, b):
+  max_tol = ip.linear.Tol.maximize(A, b)
+  return max_tol[1] < 0, max_tol[0]
 
-  def mid(self):
-    return [[interval.mid() for interval in row] for row in self.intervals]
+def b_correction(b, k):
+  e = ip.Interval([[-k, k] for i in range(len(b))])
+  return b + e
 
-  def rad(self):
-    return [[interval.rad() for interval in row] for row in self.intervals]
+def find_b_correction_min_K(A, b, eps=10e-3, max_iterations=1000):
+  prev_k = 0
+  cur_k = 0
+  iteration = 0
+  corrected_b = b
+  is_empty, _ = is_tolerance_set_empty(A, corrected_b)
 
-class IntervalVector:
-  def __init__(self, intervals):
-    self.intervals = np.array(intervals)
+  while is_empty and iteration <= max_iterations:
+    prev_k = cur_k
+    cur_k = math.exp(iteration)
+    corrected_b = b_correction(b, cur_k)
+    is_empty, _ = is_tolerance_set_empty(A, corrected_b)
+    iteration += 1
 
-  def mid(self):
-    return [interval.mid() for interval in self.intervals]
+  if is_empty:
+    raise Exception('Could not find K for b-correction')
 
-  def rad(self):
-    return [interval.rad() for interval in self.intervals]
+  iteration = 0
 
-def tol(x, A, b):
-  values = []
+  while abs(prev_k - cur_k) > eps and iteration <= max_iterations:
+    mid_k = (prev_k + cur_k) / 2
 
-  for i in range(A.intervals.shape[0]):
-    value = b.intervals[i].rad() - (-np.dot(A.intervals[i], x) + b.intervals[i].mid()).abs()
-    values.append(value)
+    corrected_b = b_correction(b, mid_k)
+    is_empty, _ = is_tolerance_set_empty(A, corrected_b)
 
-  return min(values)
+    if is_empty:
+      prev_k = mid_k
+    else:
+      cur_k = mid_k
 
-def is_non_empty_tolerance_set(A, b, epsilon=0.0001):
-  def target(x):
-    return -tol(x, A, b)
+    iteration += 1
 
-  mid_A = np.array(A.mid())
-  mid_b = np.array(b.mid())
-  initial_guess, _, _, _ = np.linalg.lstsq(mid_A, mid_b, rcond=None)
+  corrected_b = b_correction(b, cur_k)
 
-  result = minimize(target, initial_guess, method='BFGS', options={'gtol': epsilon})
+  return corrected_b, cur_k, iteration
 
-  max_tol = -result.fun
-  print(result)
-  return max_tol >= 0
+def A_correction(A):
+  max_tol = ip.linear.Tol.maximize(A, b)
+  lower_bound = abs(max_tol[1]) / (abs(max_tol[0][0]) + abs(max_tol[0][1]))
 
-def b_correction(b, K):
-  e = IntervalVector([Interval(-1, 1) for _ in range(len(b.intervals))])
-  corrected_b = IntervalVector([Interval(b_i.mid() + K, b_i.mid() + K) for b_i in b.intervals])
-  return corrected_b
+  rad_A = ip.rad(A)
+  upper_bound = rad_A[0][0]
 
-def a_correction(A, K):
-  corrected_intervals = [[Interval(a_ij.mid() + K, a_ij.mid() + K) for a_ij in row] for row in A.intervals]
-  return IntervalMatrix(corrected_intervals)
+  for a_i in rad_A:
+    for a_ij in a_i:
+      if a_ij < upper_bound:
+        upper_bound = a_ij
 
-def plot_tol_functional(A, b):
-  x = np.linspace(-1, 3, 21)
-  y = np.linspace(0, 4, 21)
+  e = (lower_bound + upper_bound) / 2
+  corrected_A = []
+
+  for i in range(len(A)):
+    A_i = []
+
+    for j in range(len(A[0])):
+      A_i.append([A[i][j]._a + e, A[i][j]._b - e])
+
+    corrected_A.append(A_i)
+
+  print(lower_bound, upper_bound)
+
+  return ip.Interval(corrected_A)
+
+def draw_tol(A, b):
+  max_tol = ip.linear.Tol.maximize(A, b)
+
+  grid_min, grid_max = max_tol[0][0] - 2, max_tol[0][0] + 2
+  x_1_, x_2_ = np.mgrid[grid_min:grid_max:100j, grid_min:grid_max:100j]
+  list_x_1 = np.linspace(grid_min, grid_max, 100)
+  list_x_2 = np.linspace(grid_min, grid_max, 100)
+
+  list_tol = np.zeros((100, 100))
+  for idx_x1, x1 in enumerate(list_x_1):
+    for idx_x2, x2 in enumerate(list_x_2):
+      x = [x1, x2]
+      tol_values = []
+      for i in range(len(b)):
+        sum_ = sum(A[i][j] * x[j] for j in range(len(x)))
+        rad_b, mid_b = ip.rad(b[i]), ip.mid(b[i])
+        tol = rad_b - ip.mag(mid_b - sum_)
+        tol_values.append(tol)
+      list_tol[idx_x1, idx_x2] = min(tol_values)
+
+  fig = plt.figure()
+  ax = fig.add_subplot(111, projection='3d')
+  ax.plot_surface(x_1_, x_2_, list_tol, cmap="Greys")
+  ax.scatter(*max_tol[0], max_tol[1], color='red', s=50)
+
+  plt.show()
+
+def plot_tol_functional(A, b, solution):
+  x = np.linspace(float(solution[0]) - 2, float(solution[0]) + 2, 91)
+  y = np.linspace(float(solution[1]) -2, float(solution[1]) + 2, 91)
   xx, yy = np.meshgrid(x, y)
-  zz = np.array([[0 if tol([x, y], A, b) < 0 else 1 for x, y in zip(x_row, y_row)] for x_row, y_row in zip(xx, yy)])
+  zz = np.array([[1 if ip.linear.Tol.value(A, b, [x, y]) >= 0 else 0 for x, y in zip(x_row, y_row)] for x_row, y_row in zip(xx, yy)])
 
   plt.contourf(xx, yy, zz, levels=1, colors=['lightcoral', 'lightgreen'])
   plt.colorbar()
@@ -69,42 +115,68 @@ def plot_tol_functional(A, b):
   plt.show()
 
 if __name__ == '__main__':
-  # A = IntervalMatrix([
-  #   [Interval(0.65, 1.25), Interval(0.70, 1.3)],
-  #   [Interval(0.75, 1.35), Interval(0.70, 1.3)]
+  # A = ip.Interval([
+  #   [[3, 6], [-5, 2]],
+  #   [[-5, 7], [-3, -1]]
   # ])
-  # b = IntervalVector([Interval(2.75, 3.15), Interval(2.85, 3.25)])
+  # b = ip.Interval([
+  #   [-2, 2],
+  #   [-1, 1],
+  # ])
+  # A = ip.Interval([
+  #   [[2, 5], [1, 2]],
+  #   [[-7, -5], [6, 7]]
+  # ])
+  # b = ip.Interval([
+  #   [3, 4],
+  #   [7, 8],
+  # ])
 
-  # A = IntervalMatrix([
-  #   [Interval(0.65, 1.25), Interval(0.70, 1.3)],
-  #   [Interval(0.75, 1.35), Interval(0.70, 1.3)],
-  #   [Interval(0.8, 1.4), Interval(0.70, 1.3)],
+  # A = ip.Interval([
+  #   [[0.65, 1.25], [0.70, 1.3]],
+  #   [[0.75, 1.35], [0.70, 1.3]]
   # ])
-  # b = IntervalVector([
-  #   Interval(2.75, 3.15),
-  #   Interval(2.85, 3.25),
-  #   Interval(2.90, 3.3),
+  # b = ip.Interval([
+  #   [2.75, 3.15],
+  #   [2.85, 3.25],
   # ])
 
-  A = IntervalMatrix([
-    [Interval(0.65, 1.25), Interval(0.70, 1.3)],
-    [Interval(0.75, 1.35), Interval(0.70, 1.3)],
-    [Interval(0.8, 1.4), Interval(0.70, 1.3)],
-    [Interval(-0.3, 0.3), Interval(0.70, 1.3)],
+  # A = ip.Interval([
+  #   [[0.65, 1.25], [0.70, 1.3]],
+  #   [[0.75, 1.35], [0.70, 1.3]],
+  #   [[0.8, 1.4], [0.70, 1.3]],
+  # ])
+  # b = ip.Interval([
+  #   [2.75, 3.15],
+  #   [2.85, 3.25],
+  #   [2.90, 3.3],
+  # ])
+
+  A = ip.Interval([
+    [[0.65, 1.25], [0.70, 1.3]],
+    [[0.75, 1.35], [0.70, 1.3]],
+    [[0.8, 1.4], [0.70, 1.3]],
+    [[-0.3, 0.3], [0.70, 1.3]],
   ])
-  b = IntervalVector([
-    Interval(2.75, 3.15),
-    Interval(2.85, 3.25),
-    Interval(2.90, 3.3),
-    Interval(1.8, 2.2),
+  b = ip.Interval([
+    [2.75, 3.15],
+    [2.85, 3.25],
+    [2.90, 3.3],
+    [1.8, 2.2],
   ])
 
-  if is_non_empty_tolerance_set(A, b):
-    print('The tolerance set is non-empty.')
-  else:
+  is_empty, solution = is_tolerance_set_empty(A, b)
+
+  if is_empty:
     print('The tolerance set is empty. Performing corrections.')
 
-  K = 0
-  corrected_A = a_correction(A, K)
-  corrected_b = b_correction(b, K)
-  plot_tol_functional(A, b)
+    corrected_b, k, iteration = find_b_correction_min_K(A, b, 10e-3)
+    b = corrected_b
+    print(f'b-correction minimum k is {k} ({iteration} iterations)')
+
+    # A = A_correction(A)
+  else:
+    print('The tolerance set is non-empty.')
+
+  plot_tol_functional(A, b, solution)
+  draw_tol(A, b)
