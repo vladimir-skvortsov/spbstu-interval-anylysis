@@ -205,6 +205,34 @@
     \text{med}_P \mathbf{X} = (\mathbf{x}_m + \mathbf{x}_{m+1}) / 2.
   \end{equation}
 
+  \subsection{Коэффициент Жаккара}
+
+  Коэффициент Жаккара для двух интервалов:
+
+  \begin{equation}
+    \text{Ji} (\mathbf{x}, \mathbf{y})
+      = \frac{\text{wid} (x \land y)}{\text{wid} (x \lor y)}
+      = \frac{\min \{ \overline{\mathbf{x}}, \overline{\mathbf{y}} \} - \max \{ \underline{\mathbf{x}}, \underline{\mathbf{y}} \}}
+        {\max\{ \overline{\mathbf{x}}, \overline{\mathbf{y}} \} - \min \{ \underline{\mathbf{x}}, \underline{\mathbf{y}} \}}.
+  \end{equation}
+
+  Коэффициент Жаккара для множества интервалов:
+
+  \begin{equation}
+    \text{Ji} (\mathbf{X})
+      = \frac{\min \overline{\mathbf{x}_i} - \max \underline{\mathbf{x}_i}}
+        {\max \overline{\mathbf{x}_i} - \min \underline{\mathbf{x}_i}}.
+  \end{equation}
+
+  Коэффициент Жаккара для двух множеств интервалов:
+
+  \begin{equation}
+    \text{Ji}_k (\mathbf{X}, \mathbf{Y})
+      = \frac{\min \{ \overline{\mathbf{x}_k}, \overline{\mathbf{y}_k} \} - \max \{ \underline{\mathbf{x}_k}, \underline{\mathbf{y}_k} \}}
+        {\max\{ \overline{\mathbf{x}_k}, \overline{\mathbf{y}_k} \} - \min \{ \underline{\mathbf{x}_k}, \underline{\mathbf{y}_k} \}},
+      \ k \in 1, 2, \dots, |\mathbf{X}|.
+  \end{equation}
+
   \section{Реализаця}
 
   Лабораторная работа выполнена на языке программирования Python. В ходе
