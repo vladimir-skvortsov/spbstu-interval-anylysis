@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.6)  2 DEC 2024 18:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.6)  2 DEC 2024 20:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -822,11 +822,11 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 69.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for T2A+cmtt on input line 91.
+LaTeX Font Info:    Trying to load font information for T2A+cmtt on input line 135.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
 File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
-Overfull \hbox (5.43256pt too wide) in paragraph at lines 94--97
+Overfull \hbox (5.43256pt too wide) in paragraph at lines 138--141
 []\T2A/cmr/m/n/10 —сылка на GitHub ре-по-зи-то-рий: []https://github.com/vladimir-skvortsov/spbstu-interval-anylysis[] 
  []
 
@@ -841,18 +841,18 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: EABF6858CEE45283DC26766A88E43738;695.
  ) 
 Here is how much of TeX's memory you used:
- 24236 strings out of 474116
- 434539 string characters out of 5743683
- 1929187 words of memory out of 5000000
- 46196 multiletter control sequences out of 15000+600000
+ 24245 strings out of 474116
+ 434685 string characters out of 5743683
+ 1934187 words of memory out of 5000000
+ 46198 multiletter control sequences out of 15000+600000
  567063 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,5n,93p,463b,480s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on main.pdf (4 pages, 173945 bytes).
+Output written on main.pdf (4 pages, 182304 bytes).
 PDF statistics:
- 124 PDF objects out of 1000 (max. 8388607)
- 92 compressed objects within 1 object stream
- 12 named destinations out of 1000 (max. 500000)
+ 134 PDF objects out of 1000 (max. 8388607)
+ 101 compressed objects within 2 object streams
+ 19 named destinations out of 1000 (max. 500000)
  53 words of extra memory for PDF output out of 10000 (max. 10000000)
 

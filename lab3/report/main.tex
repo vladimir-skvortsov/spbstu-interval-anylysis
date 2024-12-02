@@ -83,6 +83,50 @@
     \item \emph{0.225\_lvl\_side\_a\_fast\_data.bin}
   \end{itemize}
 
+  Связь кодов данных и В:
+
+  \begin{equation*}
+    V = N  / 16384 - 0.5
+  \end{equation*}
+
+  Сделать оценки констант \( a \), \( t \) в уравнениях:
+  \begin{equation}
+    \mathbf{X} + a = \mathbf{Y},
+  \end{equation}
+  \begin{equation}
+    t\mathbf{X} = \mathbf{Y},
+  \end{equation}
+
+  Метод решения:
+
+  \begin{equation}
+    \hat a = \text{argmax} F(a, \mathbf{X}, \mathbf{Y}),
+  \end{equation}
+
+  где \( F \) --- функционал.
+
+  В качестве функционала взять варианты:
+
+  \begin{equation}
+    \text{Ji} (a, \mathbf{X}, \mathbf{Y}),
+  \end{equation}
+  \begin{equation}
+    \text{Ji} (a, \text{mode} \mathbf{X}, \text{mode} \mathbf{Y}),
+  \end{equation}
+  \begin{equation}
+    \text{Ji} (a, \text{med}_K \mathbf{X}, \text{med}_K \mathbf{Y}),
+  \end{equation}
+  \begin{equation}
+    \text{Ji} (a, \text{med}_P \mathbf{X}, \text{med}_P \mathbf{Y}),
+  \end{equation}
+
+  где \( \text{Ji} \) --- коэффициент Жаккара,
+  \( \text{mode} \) --- интервальная мода,
+  \( \text{med}_K \), \( \text{med}_P \) --- интервальные медианы Крейновича
+  и Пролубникова.
+
+  Сделать точечные и интервальные оценки, задавшись уровнем \( \alpha \).
+
   \section{Необходимая теория}
 
   \section{Реализаця}
