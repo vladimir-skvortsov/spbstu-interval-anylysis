@@ -1,0 +1,103 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}
+\usepackage{graphicx}
+\graphicspath{ {./graphics/} }
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\pagestyle{empty} %
+\usepackage[pageanchor]{hyperref}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{indentfirst}
+\usepackage{tikz}
+
+\newcommand{\kaucher}{
+  \begin{tikzpicture}
+    \draw (0, 0) circle (0.6ex);
+    \draw (-0.6ex, 0) -- (0.6ex, 0);
+  \end{tikzpicture}%
+}
+
+\begin{document}
+  \begin{titlepage}
+    \begin{center}
+      Санкт-Петербургский политехнический университет \\Петра Великого
+    \end{center}
+
+    \begin{center}
+      Физико-механический институт
+    \end{center}
+
+    \begin{center}
+      Высшая школа прикладной математики и вычислительной\\ физики
+    \end{center}
+
+    \vspace{8em}
+
+    \begin{center}
+      \textbf{Отчет по лабораторной работе №3}\\
+      \textbf{“Интервальный анализ”}
+    \end{center}
+
+    \vspace{\fill}
+
+    \begin{flushright}
+      \noindentВыполнили студент группы 5030102/10201:
+      \hfill
+      Скворцов Владимир Сергеевич \\
+    \end{flushright}
+    Преподаватель: \hfill Баженов Александр Николаевич
+
+    \vspace{12em}
+
+    \begin{center}
+      Санкт-Петербург\\
+      2024
+    \end{center}
+  \end{titlepage}
+
+  \tableofcontents
+
+  \newpage
+
+  \section{Постановка задачи}
+
+  Даны 2 интервальных выборки
+
+  \begin{equation}
+    \mathbf{X} = \{ \mathbf{x}_i \},
+  \end{equation}
+  \begin{equation}
+    \mathbf{Y} = \{ \mathbf{y}_i \}.
+  \end{equation}
+
+  Взять \( \mathbf{X}, \mathbf{Y} \) из файлов данных, задав
+  \( \text{rad} \mathbf{x} = \text{rad} \mathbf{y} = \frac{1}{2^N} \text{В} \),
+  \( N = 14 \).
+
+  Файлы данных:
+  \begin{itemize}
+    \item \emph{-0.205\_lvl\_side\_a\_fast\_data.bin}
+    \item \emph{0.225\_lvl\_side\_a\_fast\_data.bin}
+  \end{itemize}
+
+  \section{Необходимая теория}
+
+  \section{Реализаця}
+
+  Лабораторная работа выполнена на языке программирования Python. В ходе
+  работы были также использованы библиотеки \verb!numpy! и
+  \verb!matplotlib!.
+
+  Ссылка на GitHub репозиторий:
+  \href{https://github.com/vladimir-skvortsov/spbstu-interval-anylysis}
+  {https://github.com/vladimir-skvortsov/spbstu-interval-anylysis}
+
+  \clearpage
+
+  \section{Результаты}
+
+  \section{Выводы}
+\end{document}
