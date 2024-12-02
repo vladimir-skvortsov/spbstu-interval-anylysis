@@ -164,6 +164,47 @@
     \text{med}_K = [\text{med} \underline c, \text{med} \overline c].
   \end{equation}
 
+  \subsection{Интервальная медиана Пролубникова}
+
+  Зададим отношение порядка на алгебре \( \mathbb{IR} \). Говорят, что
+  неравенство \( \mathbf{a} \leqslant \mathbf{b} \) выполняется
+
+  \begin{enumerate}
+    \item в сильном смысле, если
+      \( \forall \mathbf{a} \in \mathbb{IR} \ \forall \mathbf{b} \in \mathbb{IR}: \overline{\mathbf{a}} \leqslant \underline{\mathbf{b}} \),
+    \item в слабом смысле, если
+      \( \exists \mathbf{a} \in \mathbb{IR} \ \exists \mathbf{b} \in \mathbb{IR}: \underline{\mathbf{a}} \leqslant \overline{\mathbf{b}} \),
+    \item в \( \forall \exists \)-смысле, если
+      \( \forall \mathbf{a} \in \mathbb{IR} \ \exists \mathbf{b} \in \mathbb{IR}: \overline{\mathbf{a}} \leqslant \overline{\mathbf{b}} \),
+    \item в \( \exists \forall \)-смысле, если
+      \( \exists \mathbf{a} \in \mathbb{IR} \ \forall \mathbf{b} \in \mathbb{IR}: \underline{\mathbf{a}} \leqslant \underline{\mathbf{b}} \),
+    \item в центральном смысле, если
+      \( (\overline{\mathbf{a}} + \underline{\mathbf{a}}) / 2 \leqslant (\overline{\mathbf{b}} + \underline{\mathbf{b}}) / 2 \)
+  \end{enumerate}
+
+  Для элементов выборки \( \mathbf{X} \) можно определить линейный порядок,
+  используя любой из пяти вышеуказанных отношений порядка на
+  \( \mathbb{IR} \). То есть, если \( i \ne j \), то либо
+  \( x_i \leqslant x_j \), либо \( x_i \geqslant x_j \) для любого из
+  этих отношений порядка.
+
+  Медиана Пролубникова \( \text{med}_P \mathbf{X} \) выборки
+  \( \mathbf{X} \) --- это интервал \( \mathbf{x}_m \), для которого
+  половина интервалов из \( \mathbf{X} \) лежит слева, а половина
+  --- справа.
+
+  В ситуации, когда имеются два элемента подинтервала \( \mathbf{x}_m \)
+  и \( \mathbf{x}_{m+1} \), распо­ложенных посередине вариационного ряда,
+  \( \mathbf{x}_m \ne \mathbf{x}_{m+1} \) медиана может быть определена
+  естественным обобщением взятия полусуммы точечных значений,
+  расположенных посередине ряда из точечных значений, в случае
+  интервальной выборки взятие полусуммы интервалов \( \mathbf{x}_m \)
+  и \( \mathbf{x}_{m+1} \):
+
+  \begin{equation}
+    \text{med}_P \mathbf{X} = (\mathbf{x}_m + \mathbf{x}_{m+1}) / 2.
+  \end{equation}
+
   \section{Реализаця}
 
   Лабораторная работа выполнена на языке программирования Python. В ходе
