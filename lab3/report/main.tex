@@ -149,6 +149,21 @@
     \text{mode} \mathbf{X} = \bigcup_{k \in K} \mathbf{z}_k.
   \end{equation}
 
+  \subsection{Интервальная медиана Крейновича}
+
+  Пусть дана выборка \( \mathbf{X} = \{ \mathbf{x}_i \} \). Пусть
+  \( \underline c = \{ \underline{\mathbf{x}_i} \} \),
+  \( \overline c = \{ \overline{\mathbf{x}_i} \} \) --- конфигурация
+  точек, составленные, соответственно, из левых и правых концов интервалов
+  из \( \mathbf{X} \).
+
+  Тогда медианой Крейновича \( \text{med}_K \mathbf{X} \) интервальной
+  выборки \( \mathbf{X} \) --- это интервал
+
+  \begin{equation}
+    \text{med}_K = [\text{med} \underline c, \text{med} \overline c].
+  \end{equation}
+
   \section{Реализаця}
 
   Лабораторная работа выполнена на языке программирования Python. В ходе
