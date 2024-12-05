@@ -92,7 +92,9 @@
 
   Связь кодов данных и В:
 
-  \[ V = \text{Code} / 16384 - 0.5. \]
+  \begin{equation}
+    V = \text{Code} / 16384 - 0.5.
+  \end{equation}
 
   Сделать оценки значений \( \mathbf{Y} \) двумя способами:
 
@@ -138,11 +140,106 @@
   \href{https://github.com/vladimir-skvortsov/spbstu-interval-anylysis}
   {https://github.com/vladimir-skvortsov/spbstu-interval-anylysis}
 
+  \subsection{Алгоритм поиска оценок параметров линейной регрессии}
+
+  Каждый из файлов содержит 100 фреймов, каждый из которых включает
+  1024 массива, состоящих из 8 двухбайтовых значений. В результате
+  обработки этих данных было сформировано \( 1024 \times 8 = 8192 \)
+  интервальных систем линейных алгебраических уравнений (ИСЛАУ),
+  представленных в следующем виде:
+
+  \[
+    \begin{pmatrix}
+    [x_1 - \text{rad} \mathbf{y}, x_1 + \text{rad} \mathbf{y}] &
+    [1 - \text{rad} \mathbf{y}, 1 + \text{rad} \mathbf{y}] \\
+    \vdots & \vdots \\
+    [x_8 - \text{rad} \mathbf{y}, x_8 + \text{rad} \mathbf{y}] &
+    [1 - \text{rad} \mathbf{y}, 1 + \text{rad} \mathbf{y}]
+    \end{pmatrix}
+    \begin{pmatrix}
+    \beta_1 \\
+    \beta_0
+    \end{pmatrix}
+    = \begin{pmatrix}
+    \hat{\mathbf{y}}_{1i} \\
+    \vdots \\
+    \hat{\mathbf{y}}_{8i}
+    \end{pmatrix}, \ i \in \overline{1,8192}
+  \]
+
+  Для каждого отдельного пикселя фрейма \( x_j \) обозначает вольтаж,
+  определяемый по названию файла, \( \hat{\mathbf{y}}_{ji} \) --- оценка
+  значения, соответствующее каждому пикселю, по всем 100 фреймам,
+  \( j \) --- порядковый номер файла, а \( i \) --- номер пикселя внутри
+  файла. Параметры \( \beta_0 \) и \( \beta_1 \) представляют собой искомые
+  параметры линейной регрессии.
+
+  Каждая система линейных алгебраических уравнений была решена с
+  использованием метода Дж. Рона \cite{rohn}. В результате были получены
+  два множества интервалов оценок:
+  \( \mathbf{B}_0 = \{ \mathbf{\beta}_0 \}_{i=1}^{8192} \)
+  и \( \mathbf{B}_1 = \{ \mathbf{\beta}_1 \}_{i=1}^{8192} \). Оценка каждого
+  из параметров линейной регрессии производится следующим образом:
+
+  \[ \hat{\mathbf{\beta}}_0 = \text{mode} \mathbf{B}_0, \]
+  \[ \hat{\mathbf{\beta}}_1 = \text{mode} \mathbf{B}_1. \]
+
+  Таким образом, конечные значения \( \hat{\mathbf{\beta}}_0 \) и
+  \( \hat{\mathbf{\beta}}_1 \) служат наиболее вероятными оценками
+  параметров регрессии, что позволяет более точно анализировать
+  зависимость между переменными в исследуемых данных.
+
   \section{Результаты}
 
+  \subsection{Внутренняя оценка}
 
+  Для внутренней оценки были получены следующие результаты:
+
+  \[
+    \text{mode} \mathbf{B}_0
+      = \{ [8086.35, 8086.42], [8086.42, 8086.43], [8086.46, 8086.47], [8086.88, 8086.88] \},
+  \]
+  \[
+    \text{mode} \mathbf{B}_1 = [13070.5, 13072.5].
+  \]
+
+  \begin{figure}[htbp!]
+		\begin{center}
+			\includegraphics[width = \textwidth]{int_est}
+			\caption{Коридор совместных зависимостей для внутренней оценки.}
+      \label{figure:int_est}
+		\end{center}
+	\end{figure}
+
+  \subsection{Внешняя оценка}
+
+  Для внешней оценки были получены следующие результаты:
+
+  \[
+    \text{mode} \mathbf{B}_0 = \bigcap_{i=1}^{8192} \mathbf{\beta}_{0i}
+      = [7927.51, 8224.58],
+  \]
+  \[
+    \text{mode} \mathbf{B}_1 = \bigcap_{i=1}^{8192} \mathbf{\beta}_{1i}
+      = [13097.9, 13573.8].
+  \]
+
+  \begin{figure}[htbp!]
+		\begin{center}
+			\includegraphics[width = \textwidth]{ext_est}
+			\caption{Коридор совместных зависимостей для внешней оценки.}
+      \label{figure:ext_est}
+		\end{center}
+	\end{figure}
 
   \section{Выводы}
 
+  \bibliographystyle{plain}
+  \bibliography{references}
+
+  % TODO: Update the bibliography with relevant references.
+  \begin{thebibliography}{9}
+    \bibitem{rohn} J. Rohn --- <<Enclosing solutions of overdetermined systems of linear interval equations>>, Reliable Computing 2 (1996), 167-171.
+  \end{thebibliography}
 
 \end{document}

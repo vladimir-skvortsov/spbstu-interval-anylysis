@@ -3,5 +3,8 @@
 \contentsline {section}{\numberline {2}Необходимая теория}{2}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Интервальная мода}{2}{subsection.2.1}%
 \contentsline {section}{\numberline {3}Реализаця}{2}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Алгоритм поиска оценок параметров линейной регрессии}{3}{subsection.3.1}%
 \contentsline {section}{\numberline {4}Результаты}{3}{section.4}%
-\contentsline {section}{\numberline {5}Выводы}{3}{section.5}%
+\contentsline {subsection}{\numberline {4.1}Внутренняя оценка}{3}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Внешняя оценка}{3}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Выводы}{6}{section.5}%

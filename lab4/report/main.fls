@@ -303,6 +303,14 @@ INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
 INPUT /Users/vladimirskvortsov/Library/texlive/2024/texmf-var/fonts/tfm/lh/lh-t2a/latt1000.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
+INPUT ./graphics/int_est.png
+INPUT ./graphics/int_est.png
+INPUT ./graphics/int_est.png
+INPUT ./graphics/int_est.png
+INPUT ./graphics/ext_est.png
+INPUT ./graphics/ext_est.png
+INPUT ./graphics/ext_est.png
+INPUT ./graphics/ext_est.png
 INPUT main.aux
 INPUT ./main.out
 INPUT ./main.out

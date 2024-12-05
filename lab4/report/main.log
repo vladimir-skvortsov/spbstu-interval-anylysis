@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.6)  5 DEC 2024 17:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.6)  5 DEC 2024 20:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -822,35 +822,48 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has b
                    \relax 
 l.63   \newpage
                 [1]
-LaTeX Font Info:    Trying to load font information for T2A+cmtt on input line 134.
+LaTeX Font Info:    Trying to load font information for T2A+cmtt on input line 136.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
 File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
-Overfull \hbox (5.43256pt too wide) in paragraph at lines 137--140
+Overfull \hbox (5.43256pt too wide) in paragraph at lines 139--142
 []\T2A/cmr/m/n/10 —сылка на GitHub ре-по-зи-то-рий: []https://github.com/vladimir-skvortsov/spbstu-interval-anylysis[] 
  []
 
-[2{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [3] (./main.aux)
+[2{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+<./graphics/int_est.png, id=88, 515.2851pt x 379.4175pt>
+File: ./graphics/int_est.png Graphic file (type png)
+<use ./graphics/int_est.png>
+Package pdftex.def Info: ./graphics/int_est.png  used on input line 208.
+(pdftex.def)             Requested size: 433.62pt x 319.28168pt.
+<./graphics/ext_est.png, id=90, 515.2851pt x 379.4175pt>
+File: ./graphics/ext_est.png Graphic file (type png)
+<use ./graphics/ext_est.png>
+Package pdftex.def Info: ./graphics/ext_est.png  used on input line 229.
+(pdftex.def)             Requested size: 433.62pt x 319.28168pt.
+
+No file main.bbl.
+[3] [4 <./graphics/int_est.png>] [5 <./graphics/ext_est.png>] [6] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: C5CA1A9F20B636547BF569AC7172C8B4;888.
+(rerunfilecheck)             Checksum: 031CF4734D463FBB730598C6F3BB8889;1723.
  ) 
 Here is how much of TeX's memory you used:
- 24245 strings out of 474116
- 434687 string characters out of 5743683
- 1934187 words of memory out of 5000000
- 46201 multiletter control sequences out of 15000+600000
+ 24295 strings out of 474116
+ 435677 string characters out of 5743683
+ 1938187 words of memory out of 5000000
+ 46240 multiletter control sequences out of 15000+600000
  567810 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,5n,93p,463b,480s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,9n,93p,595b,579s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on main.pdf (4 pages, 192533 bytes).
+Output written on main.pdf (7 pages, 252228 bytes).
 PDF statistics:
- 144 PDF objects out of 1000 (max. 8388607)
- 107 compressed objects within 2 object streams
- 15 named destinations out of 1000 (max. 500000)
- 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 186 PDF objects out of 1000 (max. 8388607)
+ 142 compressed objects within 2 object streams
+ 26 named destinations out of 1000 (max. 500000)
+ 95 words of extra memory for PDF output out of 10000 (max. 10000000)
 
