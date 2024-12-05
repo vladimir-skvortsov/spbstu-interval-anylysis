@@ -7,4 +7,4 @@
 \contentsline {section}{\numberline {4}Результаты}{3}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Внутренняя оценка}{3}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Внешняя оценка}{3}{subsection.4.2}%
-\contentsline {section}{\numberline {5}Вывод}{6}{section.5}%
+\contentsline {section}{\numberline {5}Вывод}{5}{section.5}%
