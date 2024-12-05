@@ -1,5 +1,5 @@
 # Fdb version 4
-["bibtex main"] 0 "main.aux" "main.bbl" "main" 1733421377.84246 0
+["bibtex main"] 0 "main.aux" "main.bbl" "main" 1733421806.19479 0
   "/usr/local/texlive/2024/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
   "main.aux" 0 -1 0 "pdflatex"
   "references.bib" 0 -1 0 ""
@@ -7,7 +7,7 @@
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1733421376.71706 "/Users/vladimirskvortsov/Projects/spbstu/spbstu-interval-anylysis/lab4/report/main.tex" "main.pdf" "main" 1733421377.84269 0
+["pdflatex"] 1733421805.10194 "/Users/vladimirskvortsov/Projects/spbstu/spbstu-interval-anylysis/lab4/report/main.tex" "main.pdf" "main" 1733421806.195 0
   "/Users/vladimirskvortsov/Library/texlive/2024/texmf-var/fonts/tfm/lh/lh-t2a/labx1000.tfm" 1712594449.9276 3300 6abb8e321227ead2a8e929e5abc72bd3 ""
   "/Users/vladimirskvortsov/Library/texlive/2024/texmf-var/fonts/tfm/lh/lh-t2a/labx1200.tfm" 1712594461.4327 3308 eee81981029f67083258db36df06e523 ""
   "/Users/vladimirskvortsov/Library/texlive/2024/texmf-var/fonts/tfm/lh/lh-t2a/labx1440.tfm" 1712594455.58063 3304 6a543c07045572737981351171e0505e ""
@@ -17,7 +17,7 @@
   "/Users/vladimirskvortsov/Library/texlive/2024/texmf-var/fonts/tfm/lh/lh-t2a/larm1200.tfm" 1712594458.34882 3240 c2435f2b5cd66d4930bc29b8df87967e ""
   "/Users/vladimirskvortsov/Library/texlive/2024/texmf-var/fonts/tfm/lh/lh-t2a/larm1440.tfm" 1712594452.87019 3256 3daaa33cf35cf3f354983aa3214ecd7f ""
   "/Users/vladimirskvortsov/Library/texlive/2024/texmf-var/fonts/tfm/lh/lh-t2a/latt1000.tfm" 1712615341.25782 1272 55f67101730a20777decd892fb4b4e3e ""
-  "/Users/vladimirskvortsov/Projects/spbstu/spbstu-interval-anylysis/lab4/report/main.tex" 1733421376.53424 9223 14de57849da0952f8e5a0bcaf5a9857d ""
+  "/Users/vladimirskvortsov/Projects/spbstu/spbstu-interval-anylysis/lab4/report/main.tex" 1733421804.90981 10909 9f2d85af6786864472e00f92f1149c36 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc" 1136849721 3141 82d5616418ed8d5de703b3951bedecb4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -187,11 +187,11 @@
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
   "graphics/ext_est.png" 1733419372.21526 33564 fcb6e5bf54d77d60a0c04090473e1807 ""
   "graphics/int_est.png" 1733419364.83413 19799 2c3ebfc83344148cae2c46cba2a5dde8 ""
-  "main.aux" 1733421377.51633 2348 0d039042bdd109e29773c835f7c33abd "pdflatex"
+  "main.aux" 1733421805.87456 2346 4e70b82a4f2869c5fec6083784f3b64a "pdflatex"
   "main.bbl" 0 -1 0 "bibtex main"
-  "main.out" 1733421377.51753 1723 031cf4734d463fbb730598c6f3bb8889 "pdflatex"
-  "main.tex" 1733421376.53424 9223 14de57849da0952f8e5a0bcaf5a9857d ""
-  "main.toc" 1733421377.51784 884 3dd5b7fd2efd1f7743f932d458505581 "pdflatex"
+  "main.out" 1733421805.87566 1715 fcdc3600a0e12cc24698b64cd9ee569a "pdflatex"
+  "main.tex" 1733421804.90981 10909 9f2d85af6786864472e00f92f1149c36 ""
+  "main.toc" 1733421805.87593 882 a28698b1183b3359629045fefc51e39e "pdflatex"
   (generated)
   "main.aux"
   "main.log"
