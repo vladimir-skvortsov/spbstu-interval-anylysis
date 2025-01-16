@@ -19,8 +19,8 @@ def find_upper_bound(mid_matrix):
   k = 0
 
   while 0 not in det(mid_matrix, alpha):
-    alpha = Decimal(math.exp(k))
     k += 1
+    alpha = Decimal(math.exp(k))
 
   return alpha
 
