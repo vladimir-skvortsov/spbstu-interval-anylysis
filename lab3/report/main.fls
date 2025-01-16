@@ -304,6 +304,14 @@ INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
 INPUT /Users/vladimirskvortsov/Library/texlive/2024/texmf-var/fonts/tfm/lh/lh-t2a/latt1000.tfm
+INPUT ./graphics/x_mean.png
+INPUT ./graphics/x_mean.png
+INPUT ./graphics/x_mean.png
+INPUT ./graphics/x_mean.png
+INPUT ./graphics/y_mean.png
+INPUT ./graphics/y_mean.png
+INPUT ./graphics/y_mean.png
+INPUT ./graphics/y_mean.png
 INPUT main.aux
 INPUT ./main.out
 INPUT ./main.out
